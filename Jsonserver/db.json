@@ -1,0 +1,45 @@
+{
+ "sopas":[
+  {
+    "id":1,
+    "nombre":"Sopa de tortilla",
+    "imagen":"https://www.mylatinatable.com/wp-content/uploads/2017/02/sopa-de-tortilla-1024x708-2-500x500.jpg"
+  },
+  {
+    "id":2,
+    "nombre":"Sopa de Cebolla",
+    "imagen":"https://www.mylatinatable.com/wp-content/uploads/2017/02/sopa-de-tortilla-1024x708-2-500x500.jpg"
+  },
+  {
+    "id":3,
+    "nombre":"Caldo de camaron",
+    "imagen":"https://www.recetasnestle.com.mx/sites/default/files/srh_recipes/5c7bd9ab17bfc4ebe0a6823b58a78691.jpg"
+  },
+  {
+    "id":4,
+    "nombre":"Pozole",
+    "imagen":"https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/BE035512-0E75-41ED-B1C2-EA9A8C6062E8/Derivates/FBEEFA5F-A1B5-47B2-B632-BFD0506D00AA.jpg"
+  }
+ ],
+ "comidas":[
+  {
+    "id":1,
+    "nombre":"Pizza"
+  },
+  {
+    "id":2,
+    "nombre":"Sandiwch"
+  },
+  {
+    "id":3,
+    "nombre":"Molletes"
+  }
+ ],
+ "pedidos":[
+  {
+    "sopa":"una sopa",
+    "comida":"una comida",
+    "cliente":"jaime"
+  }
+ ]
+}
