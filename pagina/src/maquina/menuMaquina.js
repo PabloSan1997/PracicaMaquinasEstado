@@ -1,5 +1,66 @@
 import { createMachine, assign } from "xstate";
+import { leerDatos } from "../habilitis/leerApi";
+import { mandarDatos } from "../habilitis/mandarApi";
 
+
+const fillSopas = {
+  id: "partesopas",
+  initial:"loading",
+  states: {
+    loading: {
+      invoke: {
+        id: "leerDatos",
+        src: () => leerDatos('http://localhost:4000/sopas/'),
+        onDone: {
+          target: "success",
+          actions: assign({
+            listaSopa: (context, event) => event.data,
+          }),
+        },
+        onError: {
+          target: "failure",
+          actions: assign({
+            error: "Fallo el request",
+          }),
+        },
+      },
+    },
+    success: {},
+    failure: {
+      on: {
+        RETRY: { target: "loading" },
+      },
+    },
+  },
+};
+const fillComida = {
+  id:"Leer comida",
+  initial:"loading",
+  states:{
+    loading:{
+      invoke:{
+        id:"leer datos",
+        src:()=>leerDatos('http://localhost:4000/comidas/'),
+        onDone:{
+          target:"succes",
+          actions:assign({listaComida:(context, event)=>event.data})
+        },
+        onError:{
+          target: "failure",
+          actions: assign({
+            error: "Fallo el request",
+          }),
+        }
+      }
+    },
+    succes:{},
+    failure: {
+      on: {
+        RETRY: { target: "loading" },
+      },
+    },
+  }
+}
 const comidaMachine = createMachine(
   {
     id: "Maquina menu",
@@ -9,8 +70,8 @@ const comidaMachine = createMachine(
       sopaSelecionada: "",
       comidaSelecionada: "",
       nombreEscrito: "",
-      listaSopa:["sopa1", "sopa2", "sopa3", "sopa4"],
-      listaComida:['Lasagna', "Pizza", "Pozole", "Tacos"]
+      listaComida: [],
+      listaSopa:[]
     },
     states: {
       inicio: {
@@ -26,13 +87,14 @@ const comidaMachine = createMachine(
             target: "inicio",
           },
           SIGUIENTE: {
-            cond:"condicionSopa",
+            cond: "condicionSopa",
             target: "comidas",
             actions: assign(
               (context, event) => (context.sopaSelecionada = event.nuevaSopa)
             ),
           },
         },
+        ...fillSopas
       },
       comidas: {
         on: {
@@ -40,7 +102,7 @@ const comidaMachine = createMachine(
             target: "inicio",
           },
           SIGUIENTE: {
-            cond:"condicionComida",
+            cond: "condicionComida",
             target: "nombre",
             actions: assign(
               (context, event) =>
@@ -48,6 +110,7 @@ const comidaMachine = createMachine(
             ),
           },
         },
+        ...fillComida,
       },
       nombre: {
         on: {
@@ -65,9 +128,10 @@ const comidaMachine = createMachine(
       },
       final: {
         after: {
-          10000: {
+          5000: {
             target: "inicio",
             actions: assign((context, event) => {
+              mandarDatos(context.sopaSelecionada, context.comidaSelecionada, context.nombreEscrito);
               context.sopaSelecionada = "";
               context.comidaSelecionada = "";
               context.nombreEscrito = "";
@@ -77,6 +141,7 @@ const comidaMachine = createMachine(
         on: {
           ACEPTAR: {
             target: "inicio",
+            actions:assign((context,event)=>mandarDatos(context.sopaSelecionada, context.comidaSelecionada, context.nombreEscrito))
           },
         },
       },
@@ -84,14 +149,14 @@ const comidaMachine = createMachine(
   },
   {
     guards: {
-      condicionNombre: (context, event)=>{
-        return event.nuevaNombre!=='';
+      condicionNombre: (context, event) => {
+        return event.nuevaNombre !== "";
       },
-      condicionSopa: (context, event)=>{
-        return event.nuevaSopa!=='';
+      condicionSopa: (context, event) => {
+        return event.nuevaSopa !== "";
       },
-      condicionComida: (context, event)=>{
-        return event.nuevaComida!=='';
+      condicionComida: (context, event) => {
+        return event.nuevaComida !== "";
       },
     },
   }

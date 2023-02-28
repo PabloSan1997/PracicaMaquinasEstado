@@ -17,8 +17,8 @@ function Sopas() {
           <button onClick={seguir}>Siguiente</button>
           <div className="contenedor contenedor-sopas">
             {opciones.map(elemento=>(
-              <div className="caja" key={elemento} onClick={()=>setMira(elemento)}>
-                <p className="texto">{elemento}</p>
+              <div className="caja" key={elemento.id} onClick={()=>setMira(elemento.nombre)}>
+                <p className="texto">{elemento.nombre}</p>
               </div>
             ))}
           </div>

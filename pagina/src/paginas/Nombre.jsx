@@ -7,6 +7,7 @@ function Nombres() {
   const [texto, setTexto]=React.useState('');
   const siguiente = (e)=>{
     e.preventDefault();
+
     send('SIGUIENTE',{nuevaNombre:texto});
   }
   const escribir = (e)=>{

@@ -2,6 +2,7 @@ import React from 'react'
 import { Navigate } from 'react-router-dom';
 import { useMicontexto } from '../contexto/contexto';
 
+
 function Final() {
     const {state, send}=useMicontexto();
     const yaesta = () =>{
