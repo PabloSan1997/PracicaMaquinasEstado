@@ -1,0 +1,27 @@
+.conenedor-comidas{
+    height: 50vh;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.conenedor-comidas #ver{
+    border: none;
+    margin: auto;
+    font-size: 2rem;
+    width: 50%;
+    padding: 10px 5px;
+    border-radius: 10px;
+    background: rgba(253, 239, 212, 0.795);
+    box-shadow: 0 0 5px black;
+    color: var(--orangeT);
+}
+
+.conenedor-comidas #ver .opcion:focus{
+    background: rgb(26, 15, 0);
+}
+.conenedor-comidas .boton{
+    margin: auto;
+    font-size: 2.3rem;
+    border-radius: 10px;
+}

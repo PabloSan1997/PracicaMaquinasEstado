@@ -1,0 +1,56 @@
+.sopasCaja{
+    width: 100%;
+    display: flex;
+    margin: 0 auto 20px auto;
+    
+}
+.opcion{
+    color: var(--orangeDark);
+    font-weight: bold;
+    margin: auto 0 auto 10%;
+    width: fit-content;
+    font-size: 1.5rem;
+    width: fit-content;
+}
+.opcion span{
+    color: rgb(105, 37, 6);
+    width: fit-content;
+}
+.sopasCaja .boton{
+    margin: auto auto auto 10px;
+    font-size: 1.5rem;
+}
+.contenedor-sopas{
+    width: 95%;
+    margin:10px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.contenedor-sopas .caja{
+    width: 45%;
+    margin:10px auto;
+    height: 450px;
+    background: rgba(218, 69, 0, 0.199);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 330px;
+    cursor: pointer;
+}
+.contenedor-sopas .caja.selec{
+    background: rgba(218, 69, 0, 0.582);
+}
+.contenedor-sopas .caja:hover{
+    background: rgba(218, 69, 0, 0.582);
+}
+.contenedor-sopas .caja img{
+    width: 80%;
+    height: 70%;
+    margin: 8% auto auto auto;
+}
+.contenedor-sopas .caja p{
+    font-size: 1.5rem;
+    margin: auto;
+    font-weight: bold;
+    color:rgb(121, 41, 9);
+}

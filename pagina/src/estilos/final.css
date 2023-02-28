@@ -1,0 +1,60 @@
+.final{
+    width: 50%;
+    margin: auto;
+    border: 2px solid orangered;
+    height: 50vh;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(235, 103, 55, 0.199);
+    display: flex;
+    flex-direction: column;
+}
+.final p.titulo{
+    width: 100%;
+    background: orangered;
+    height:fit-content;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 5px 0;
+    color: white;
+}
+.final .tabla{
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.final .tabla .fila{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-bottom: 2px solid rgb(231, 143, 71);
+}
+.final .tabla .fila .col{
+    width: 70%;
+    height: 100%;
+    background: rgba(255, 234, 218, 0.445);
+    display: flex;
+   
+}
+.final .tabla .fila .col.colT{
+    background: rgba(235, 58, 4, 0.705);
+    width: 30%;
+}
+.final .tabla .fila .col.colT p{
+    font-weight: bold;
+}
+.final .tabla .fila .col p{
+    font-size: 1.5rem;
+    margin: auto;
+    color: rgb(49, 20, 9);
+    max-width: 90%;
+    font-size: 1.2rem;
+}
+.final .boton{
+    margin: auto;
+    font-size: 1.5rem;
+}

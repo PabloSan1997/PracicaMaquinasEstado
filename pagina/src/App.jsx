@@ -7,7 +7,7 @@ import { Final } from './paginas/Final'
 import { Inicio } from './paginas/Inicio'
 import { Nombres } from './paginas/Nombre'
 import { Sopas } from './paginas/Sopas'
-
+import "./estilos/index.css";
 function App() {
   return (
     <BrowserRouter>

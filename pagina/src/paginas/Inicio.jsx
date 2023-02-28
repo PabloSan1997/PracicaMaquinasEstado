@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom';
 import { useMicontexto } from '../contexto/contexto'
+import "../estilos/inicio.css";
 
 function Inicio() {
     const {state, send} = useMicontexto();
@@ -11,12 +12,12 @@ function Inicio() {
         return (
             <>
             <h2 className='titulo1'>Bienvenido a nuestro restaurante</h2>
-            <p>En este restaurante encontrará todo tipo de platillos y comidas para usted y su familia</p>
-            <div className="contenedor contenedro-inicio">
+            <p className='texto1'>En este restaurante encontrará las mejores sopas y comidas que haya probado en este pais</p>
+            <div className="contenedro-inicio">
                 <h2 className='titulo2'>
-                    ¿Desea Pedir algo?
+                    ¿Ya esta listo para ordenar?
                 </h2>
-                <button className='boton' onClick={seguir}>Si</button>
+                <button className='boton' onClick={seguir}>Aceptar</button>
             </div>
             </>
           )

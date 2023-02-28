@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom';
 import { useMicontexto } from '../contexto/contexto';
-
+import "../estilos/final.css";
 
 function Final() {
     const {state, send}=useMicontexto();
@@ -12,7 +12,7 @@ function Final() {
     if(state.matches("final")){
         return (
             <>
-            <h2>Yo esta todo listo</h2>
+            <h2 className='titulo1'>Yo esta todo listo</h2>
             <div className="final">
                 <p className="titulo">Ya esta todo listo, aqui esta todo lo pedido :)</p>
                 <Tabla 
@@ -34,7 +34,7 @@ function Tabla({nombre, sopa, comida}){
     return (
         <div className="tabla">
         <div className="fila">
-            <div className="col">
+            <div className="col colT">
                 <p className="salida">Nombre</p>
             </div>
             <div className="col">
@@ -42,7 +42,7 @@ function Tabla({nombre, sopa, comida}){
             </div>
         </div>
         <div className="fila">
-            <div className="col">
+            <div className="col colT">
                 <p className="salida">Comida</p>
             </div>
             <div className="col">
@@ -50,7 +50,7 @@ function Tabla({nombre, sopa, comida}){
             </div>
         </div>
         <div className="fila">
-            <div className="col">
+            <div className="col colT">
                 <p className="salida">Sopa</p>
             </div>
             <div className="col">

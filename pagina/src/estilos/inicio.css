@@ -1,0 +1,27 @@
+.titulo1{
+    color: var(--orangeT2);
+    font-size: 3.5rem;
+    max-width: 95%;
+    height: fit-content;
+    margin:20px auto;
+    text-align: center;
+}
+.texto1{
+    color: var(--orangeT2);
+    margin:0 auto 10px auto;
+    width: fit-content;
+}
+.contenedro-inicio{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.contenedro-inicio .titulo2{
+    margin:20px auto;
+    color: var(--orangeT2);
+}
+.contenedro-inicio .boton{
+    font-size: 1.8rem;
+    margin: auto;
+}

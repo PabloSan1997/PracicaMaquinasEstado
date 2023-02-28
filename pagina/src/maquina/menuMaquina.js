@@ -127,17 +127,17 @@ const comidaMachine = createMachine(
         },
       },
       final: {
-        after: {
-          5000: {
-            target: "inicio",
-            actions: assign((context, event) => {
-              mandarDatos(context.sopaSelecionada, context.comidaSelecionada, context.nombreEscrito);
-              context.sopaSelecionada = "";
-              context.comidaSelecionada = "";
-              context.nombreEscrito = "";
-            }),
-          },
-        },
+        // after: {
+        //   5000: {
+        //     target: "inicio",
+        //     actions: assign((context, event) => {
+        //       mandarDatos(context.sopaSelecionada, context.comidaSelecionada, context.nombreEscrito);
+        //       context.sopaSelecionada = "";
+        //       context.comidaSelecionada = "";
+        //       context.nombreEscrito = "";
+        //     }),
+        //   },
+        // },
         on: {
           ACEPTAR: {
             target: "inicio",

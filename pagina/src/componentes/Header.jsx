@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMicontexto } from '../contexto/contexto';
-
+import "../estilos/header.css";
 function Header() {
   const {state, send} = useMicontexto();
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom';
 import { useMicontexto } from '../contexto/contexto';
-
+import "../estilos/nombre.css";
 function Nombres() {
   const {state, send} = useMicontexto();
   const [texto, setTexto]=React.useState('');
@@ -16,7 +16,7 @@ function Nombres() {
   if(state.matches('nombre')){
     return (
       <>
-      <h2>Ya casi acabamos</h2>
+      <h2 className='titulo1'>Ya casi acabamos</h2>
       <form className="conenedor-nombre" onSubmit={siguiente}>
         <label htmlFor="#texto">Escriba su nombre</label>
         <input type="text" className='entrada' id="texto" value={texto} onChange={escribir}/>
