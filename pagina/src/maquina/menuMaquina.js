@@ -1,59 +1,99 @@
 import { createMachine, assign } from "xstate";
 
-const comidaMachine = createMachine({
-  id: "Maquina menu",
-  predictableActionArguments: true,
-  initial: "inicio",
-  states: {
-    inicio: {
-      on: {
-        SI: {
-          target: "sopas",
+const comidaMachine = createMachine(
+  {
+    id: "Maquina menu",
+    predictableActionArguments: true,
+    initial: "inicio",
+    context: {
+      sopaSelecionada: "",
+      comidaSelecionada: "",
+      nombreEscrito: "",
+      listaSopa:["sopa1", "sopa2", "sopa3", "sopa4"],
+      listaComida:['Lasagna', "Pizza", "Pozole", "Tacos"]
+    },
+    states: {
+      inicio: {
+        on: {
+          SI: {
+            target: "sopas",
+          },
         },
       },
-    },
-    sopas: {
-      on: {
-        CANCELAR: {
-          target: "inicio",
+      sopas: {
+        on: {
+          CANCELAR: {
+            target: "inicio",
+          },
+          SIGUIENTE: {
+            cond:"condicionSopa",
+            target: "comidas",
+            actions: assign(
+              (context, event) => (context.sopaSelecionada = event.nuevaSopa)
+            ),
+          },
         },
-        SIGUIENTE:{
-          target:"comidas"
-        }
       },
-    },
-    comidas: {
-      on: {
-        CANCELAR: {
-          target: "inicio",
+      comidas: {
+        on: {
+          CANCELAR: {
+            target: "inicio",
+          },
+          SIGUIENTE: {
+            cond:"condicionComida",
+            target: "nombre",
+            actions: assign(
+              (context, event) =>
+                (context.comidaSelecionada = event.nuevaComida)
+            ),
+          },
         },
-        SIGUIENTE:{
-          target:"nombre"
-        }
       },
-    },
-    nombre: {
-      on: {
-        CANCELAR: {
-          target: "inicio",
+      nombre: {
+        on: {
+          CANCELAR: {
+            target: "inicio",
+          },
+          SIGUIENTE: {
+            cond: "condicionNombre",
+            target: "final",
+            actions: assign(
+              (context, event) => (context.nombreEscrito = event.nuevaNombre)
+            ),
+          },
         },
-        SIGUIENTE:{
-          target:"final"
-        }
       },
-    },
-    final: {
-      after:{
-        10000:{
-          target:"inicio"
-        }
+      final: {
+        after: {
+          10000: {
+            target: "inicio",
+            actions: assign((context, event) => {
+              context.sopaSelecionada = "";
+              context.comidaSelecionada = "";
+              context.nombreEscrito = "";
+            }),
+          },
+        },
+        on: {
+          ACEPTAR: {
+            target: "inicio",
+          },
+        },
       },
-      on:{
-        ACEPTAR:{
-          target:"inicio"
-        }
-      }
     },
   },
-});
-export{comidaMachine}
+  {
+    guards: {
+      condicionNombre: (context, event)=>{
+        return event.nuevaNombre!=='';
+      },
+      condicionSopa: (context, event)=>{
+        return event.nuevaSopa!=='';
+      },
+      condicionComida: (context, event)=>{
+        return event.nuevaComida!=='';
+      },
+    },
+  }
+);
+export { comidaMachine };

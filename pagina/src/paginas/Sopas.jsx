@@ -4,16 +4,23 @@ import { useMicontexto } from '../contexto/contexto';
 
 function Sopas() {
   const {state, send} = useMicontexto();
+  const [mira, setMira] = React.useState('');
+  const opciones = state.context.listaSopa;
   const seguir = () =>{
-      send('SIGUIENTE');
+      send('SIGUIENTE', {nuevaSopa:mira});
   }
   if(state.matches("sopas")){
       return (
           <>
           <h2 className='titulo1'>Hora de escoger una sopa</h2>
+          <p className="opcion">Mi sopa: {mira}</p>
           <button onClick={seguir}>Siguiente</button>
           <div className="contenedor contenedor-sopas">
-            aqui van las sopas
+            {opciones.map(elemento=>(
+              <div className="caja" key={elemento} onClick={()=>setMira(elemento)}>
+                <p className="texto">{elemento}</p>
+              </div>
+            ))}
           </div>
           </>
         )

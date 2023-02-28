@@ -7,7 +7,10 @@ function Nombres() {
   const [texto, setTexto]=React.useState('');
   const siguiente = (e)=>{
     e.preventDefault();
-    send('SIGUIENTE');
+    send('SIGUIENTE',{nuevaNombre:texto});
+  }
+  const escribir = (e)=>{
+    setTexto(e.target.value);
   }
   if(state.matches('nombre')){
     return (
@@ -15,7 +18,7 @@ function Nombres() {
       <h2>Ya casi acabamos</h2>
       <form className="conenedor-nombre" onSubmit={siguiente}>
         <label htmlFor="#texto">Escriba su nombre</label>
-        <input type="text" className='entrada' id="texto" value={texto} onChange={(e)=>setTexto(e.target.value)}/>
+        <input type="text" className='entrada' id="texto" value={texto} onChange={escribir}/>
         <button className='boton' type='submit'>Mandar</button>
       </form>
       </>
